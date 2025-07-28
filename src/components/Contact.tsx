@@ -1,4 +1,7 @@
+'use client';
+
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -30,21 +33,39 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      await emailjs.send(
+        'service_tg8axxk',
+        'template_tdqa0q8',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        '2unzHsgO-y5WGv6qd'
+      );
 
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message. I'll get back to you soon!",
+      });
 
-    setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: "Failed to Send",
+        description: "Something went wrong. Please try again later.",
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleDownloadCV = () => {
     const link = document.createElement('a');
-    link.href = '#';
+    link.href = '/DataAnalyst_CV.pdf'; // make sure CV is in public folder
     link.download = 'DataAnalyst_CV.pdf';
     document.body.appendChild(link);
     link.click();
@@ -55,19 +76,19 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'your.email@example.com',
-      href: 'mailto:your.email@example.com',
+      value: 'ayushsingh02506@gmail.com',
+      href: 'ayushsingh02506@gmail.com',
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      value: '+919509992840',
+      href: 'tel:+919509992840',
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Your City, Country',
+      value: 'Bihar Chappra,India',
       href: '#',
     },
   ];
@@ -98,8 +119,7 @@ const Contact = () => {
               <CardContent className="space-y-6">
                 <p className="text-muted-foreground leading-relaxed">
                   I'm always open to discussing new opportunities, collaborating on data projects, 
-                  or simply connecting with fellow data enthusiasts. Whether you have a project 
-                  in mind or want to chat about data analytics, feel free to reach out!
+                  or simply connecting with fellow data enthusiasts.
                 </p>
 
                 <div className="space-y-4">
@@ -121,7 +141,6 @@ const Contact = () => {
                   ))}
                 </div>
 
-                {/* CV Download */}
                 <div className="pt-6 border-t border-border">
                   <Button
                     onClick={handleDownloadCV}
@@ -208,7 +227,7 @@ const Contact = () => {
           </Card>
         </div>
 
-        {/* Additional CTA */}
+        {/* CTA */}
         <div className="mt-16 text-center">
           <Card className="max-w-2xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
             <CardContent className="p-8">
@@ -216,8 +235,7 @@ const Contact = () => {
                 Ready to Start Your Data Journey?
               </h3>
               <p className="text-muted-foreground mb-4">
-                Let's discuss how data analytics can drive your business forward. 
-                I'm excited to bring fresh perspectives and analytical rigor to your team.
+                Let's discuss how data analytics can drive your business forward.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-white">
