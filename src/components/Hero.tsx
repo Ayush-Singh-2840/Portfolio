@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { ArrowDown, Download, Mail } from 'lucide-react';
 import heroBg from '@/assets/hero-bg.jpg';
 
@@ -36,10 +37,22 @@ const Hero = () => {
     >
       <div className="container-width section-padding text-center z-10 relative">
         <div className="max-w-4xl mx-auto">
-          {/* Introduction */}
+          {/* Profile Picture and Introduction */}
           <div className="mb-8 animate-fade-in">
+            {/* Profile Picture */}
+            <div className="mb-6 flex justify-center">
+              <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-accent shadow-2xl hover:scale-105 transition-transform duration-300">
+                <AvatarImage 
+                  src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=400&fit=crop&crop=face" 
+                  alt="Ayush Singh - Data Analytics Professional" 
+                  className="object-cover"
+                />
+                <AvatarFallback className="bg-accent text-white text-2xl font-bold">AS</AvatarFallback>
+              </Avatar>
+            </div>
+            
             <h2 className="text-lg md:text-xl text-accent font-medium mb-4">
-              Hello, I'm
+              Hello, I'm Ayush Singh
             </h2>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               Data Analytics
