@@ -43,7 +43,7 @@ const Hero = () => {
             <div className="mb-6 flex justify-center">
               <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-accent shadow-2xl hover:scale-105 transition-transform duration-300">
                 <AvatarImage 
-                  src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=400&fit=crop&crop=face" 
+                  src="https://i.postimg.cc/9MZc9RfQ/IMG-20250718-202233.jpg" 
                   alt="Ayush Singh - Data Analytics Professional" 
                   className="object-cover"
                 />
