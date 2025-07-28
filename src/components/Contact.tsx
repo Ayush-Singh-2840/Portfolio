@@ -35,14 +35,14 @@ const Contact = () => {
 
     try {
       await emailjs.send(
-        'service_tg8axxk',
-        'template_tdqa0q8',
+        'service_x2clfzu',         // ✅ updated service ID
+        'template_313et2e',        // ✅ updated template ID
         {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
         },
-        '2unzHsgO-y5WGv6qd'
+        'AOrmS8VAVCZDePiiF'        // ✅ updated public key
       );
 
       toast({
@@ -65,7 +65,7 @@ const Contact = () => {
 
   const handleDownloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/DataAnalyst_CV.pdf'; // make sure CV is in public folder
+    link.href = '/DataAnalyst_CV.pdf'; // Make sure this file exists in public/
     link.download = 'DataAnalyst_CV.pdf';
     document.body.appendChild(link);
     link.click();
@@ -77,7 +77,7 @@ const Contact = () => {
       icon: Mail,
       label: 'Email',
       value: 'ayushsingh02506@gmail.com',
-      href: 'ayushsingh02506@gmail.com',
+      href: 'mailto:ayushsingh02506@gmail.com',
     },
     {
       icon: Phone,
@@ -88,7 +88,7 @@ const Contact = () => {
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Bihar Chappra,India',
+      value: 'Bihar Chappra, India',
       href: '#',
     },
   ];
@@ -108,7 +108,7 @@ const Contact = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Information */}
+          {/* Contact Info */}
           <div className="space-y-8">
             <Card>
               <CardHeader>
